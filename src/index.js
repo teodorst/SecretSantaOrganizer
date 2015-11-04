@@ -1,10 +1,14 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { Router, Route, Link } from 'react-router'
-import { Login } from './containers/Login.jsx'
+import Login from './containers/Login.jsx'
+import Store from './stores/store.js'
+import { Provider } from 'react-redux'
 
 render((
-  <Router>
-    <Route path="/login" component={Login}/>
-  </Router>
-), document.body)
+  <Provider store={Store}>
+    <Router>
+      <Route path="/" component={Login}/>
+    </Router>
+  </Provider>
+), document.getElementById('app'))

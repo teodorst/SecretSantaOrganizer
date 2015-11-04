@@ -9,10 +9,12 @@ const initialState = {
 
 export function user( state = null, action ) {
   switch( action.type ) {
-    case USER_LOGGED_IN
+    case USER_LOGGED_IN:
       return 'gigel';
-    case USER_LOGGED_OUT
+    case USER_LOGGED_OUT:
       return null;
+    default:
+      return state;
   }
 }
 
