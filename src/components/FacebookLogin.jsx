@@ -49,17 +49,14 @@ React.createClass({
 
   responseApi: function( authResponse ) {
     FB.api('/me', function(response) {
-      console.log(response);
       response.status = 'connected';
       response.accessToken = authResponse.accessToken;
       response.expiresIn = authResponse.expiresIn;
       response.signedRequest = authResponse.signedRequest;
-
+      console.log(response);
       if ( this.props.loginHandler ) {
         this.props.loginHandler( response );
       }
-
-
     }.bind(this));
   },
 
@@ -78,10 +75,11 @@ React.createClass({
   },
   
   handleClick: function() {
-    var valueScope = this.props.scope || 'public_profile, email, user_birthday';
+    var valueScope = this.props.scope || 'public_profile, email, user_friends';
 
     FB.login(this.checkLoginState, { scope: valueScope });
   }
 
 })
 );
+  
